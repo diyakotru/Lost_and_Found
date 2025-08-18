@@ -22,7 +22,9 @@ export default function Navbar() {
             </Link>
             <span className="font-bold">Lost Items</span>
             <span className="font-bold">Found Items</span>
-            <span className="font-bold">Contact Us</span>
+            <Link to={"/About"}>
+            <span className="font-bold">About Us</span>
+            </Link>
           </div>
 
           <div className="flex items-center gap-4">

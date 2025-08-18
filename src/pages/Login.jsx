@@ -23,15 +23,15 @@ function Login() {
                 className="w-full rounded-lg border border-gray-300 px-3 py-2"
               />
             </div>
-
+            {/*id is 'OTP' for verification code */}
             <div className="flex flex-col">
-              <label htmlFor="password" className="text-sm font-medium mb-1">
-                Password
+              <label htmlFor="OTP" className="text-sm font-medium mb-1">
+                Verification Code
               </label>
               <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
+                type="OTP"
+                id="OTP"
+                placeholder="Enter verification code"
                 className="w-full rounded-lg border border-gray-300 px-3 py-2"
               />
             </div>

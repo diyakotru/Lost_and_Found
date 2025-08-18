@@ -4,8 +4,8 @@ function Signup() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    password: "",
-    confirmPassword: "",
+    enrollmentNo: "",
+    OTP: "",
   });
 
   const [error, setError] = useState("");
@@ -28,18 +28,13 @@ function Signup() {
       setError("Invalid email format");
       return;
     }
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
+    if (formData.enrollmentNo.length < 14) {
+      setError("Enrollment number must be at least 14 characters");
       return;
-    }
-    if (formData.password.length < 8) {
-      setError("Password must be at least 8 characters long");
-      return;
-    }
-
+    };
     // If all validations pass, reset the form and error
     setError("");
-    alert("SignUp completed succesfully !")
+    alert("SignUp completed succesfully !");
   };
 
   return (
@@ -69,6 +64,24 @@ function Signup() {
               />
             </div>
             <div className="flex flex-col">
+              <label
+                htmlFor="enrollmentNo"
+                className="text-sm font-medium mb-1"
+              >
+                Enrollment Number
+              </label>
+              <input
+                type="enrollmentNo"
+                id="enrollmentNo"
+                name="enrollmentNo"
+                value={formData.enrollmentNo}
+                onChange={handleChange}
+                placeholder="Enter your Enrollment Number"
+                required
+                className="w-full rounded-lg border border-gray-300 px-3 py-2"
+              />
+            </div>
+            <div className="flex flex-col">
               <label htmlFor="email" className="text-sm font-medium mb-1">
                 Email
               </label>
@@ -85,41 +98,22 @@ function Signup() {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="password" className="text-sm font-medium mb-1">
-                Password
+              <label htmlFor="OTP" className="text-sm font-medium mb-1">
+                Verification Code
               </label>
               <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
+                type="OTP"
+                id="OTP"
+                name="OTP"
+                value={formData.OTP}
                 onChange={handleChange}
-                placeholder="Enter your password"
-                required
-                className="w-full rounded-lg border border-gray-300 px-3 py-2"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="confirmPassword" className="text-sm font-medium mb-1">
-                Confirm Password
-              </label>
-              <input
-                type="confirmPassword"
-                id="confirmPassword"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                placeholder="Confirm your password"
+                placeholder="Ente rthe verification code sent on email"
                 required
                 className="w-full rounded-lg border border-gray-300 px-3 py-2"
               />
             </div>
 
-            {error && (
-              <div className="mt-4 text-red-500 text-sm">
-                {error}
-              </div>
-            )}
+            {error && <div className="mt-4 text-red-500 text-sm">{error}</div>}
             <button
               type="submit"
               className="w-full bg-themeGreen text-themeCream font-semibold py-[10px] rounded-lg shadow-md"
