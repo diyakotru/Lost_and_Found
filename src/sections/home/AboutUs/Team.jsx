@@ -7,7 +7,7 @@ function Team() {
       <div className="flex w-[900px] bg-themeCream rounded-3xl overflow-hidden shadow-md">
         {/* Left: Team Members */}
         <div className="flex-1 p-10">
-          <h1 className="text-3xl font-bold text-center text-themeGreen mb-6">
+          <h1 className="text-3xl font-bold text-center text-black mb-6">
             Meet Our Team
           </h1>
           <p className="text-center text-xl font-bold text-themeGreen mb-5 mt-5">
