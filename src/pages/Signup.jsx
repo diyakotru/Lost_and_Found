@@ -107,7 +107,7 @@ function Signup() {
                 name="OTP"
                 value={formData.OTP}
                 onChange={handleChange}
-                placeholder="Ente rthe verification code sent on email"
+                placeholder="Enter the verification code sent on email"
                 required
                 className="w-full rounded-lg border border-gray-300 px-3 py-2"
               />
