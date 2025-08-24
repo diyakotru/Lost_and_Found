@@ -1,135 +1,60 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function Signup() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    enrollmentNo: "",
-    OTP: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(String(email).toLowerCase());
-  };
-  const handleSubmit = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    // Basic validation checks
-    if (!validateEmail(formData.email)) {
-      setError("Invalid email format");
-      return;
+    try {
+      const res = await axios.post("http://localhost:5000/signup", { email, password });
+      alert(res.data.msg || "Signup successful, please login!");
+      window.location.href = "/login";
+    } catch (err) {
+      alert(err.response?.data?.msg || "Something went wrong!");
     }
-    if (formData.enrollmentNo.length < 14) {
-      setError("Enrollment number must be at least 14 characters");
-      return;
-    };
-    // If all validations pass, reset the form and error
-    setError("");
-    alert("SignUp completed succesfully !");
   };
 
   return (
     <div className="my-20 flex items-center justify-center">
-      {/* Common Card */}
       <div className="flex w-[900px] bg-themeCream rounded-3xl overflow-hidden shadow-md">
-        {/* Left: Login Form */}
+        {/* Left: Signup Form */}
         <div className="flex-1 p-10">
-          <h1 className="text-2xl font-bold text-center text-themeGreen mb-6">
-            Sign Up
-          </h1>
-
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <h1 className="text-2xl font-bold text-center text-themeGreen mb-6">Sign Up</h1>
+          <form className="space-y-5" onSubmit={handleSignup}>
             <div className="flex flex-col">
-              <label htmlFor="name" className="text-sm font-medium mb-1">
-                Name
-              </label>
-              <input
-                type="name"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Enter your name"
-                required
-                className="w-full rounded-lg border border-gray-300 px-3 py-2"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label
-                htmlFor="enrollmentNo"
-                className="text-sm font-medium mb-1"
-              >
-                Enrollment Number
-              </label>
-              <input
-                type="enrollmentNo"
-                id="enrollmentNo"
-                name="enrollmentNo"
-                value={formData.enrollmentNo}
-                onChange={handleChange}
-                placeholder="Enter your Enrollment Number"
-                required
-                className="w-full rounded-lg border border-gray-300 px-3 py-2"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="email" className="text-sm font-medium mb-1">
-                Email
-              </label>
+              <label className="text-sm font-medium mb-1">Email</label>
               <input
                 type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
                 placeholder="Enter your email"
-                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full rounded-lg border border-gray-300 px-3 py-2"
               />
             </div>
-
             <div className="flex flex-col">
-              <label htmlFor="OTP" className="text-sm font-medium mb-1">
-                Verification Code
-              </label>
+              <label className="text-sm font-medium mb-1">Password</label>
               <input
-                type="OTP"
-                id="OTP"
-                name="OTP"
-                value={formData.OTP}
-                onChange={handleChange}
-                placeholder="Enter the verification code sent on email"
-                required
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full rounded-lg border border-gray-300 px-3 py-2"
               />
             </div>
-
-            {error && <div className="mt-4 text-red-500 text-sm">{error}</div>}
-            <button
-              type="submit"
-              className="w-full bg-themeGreen text-themeCream font-semibold py-[10px] rounded-lg shadow-md"
-            >
+            <button type="submit" className="w-full bg-themeGreen text-themeCream font-semibold py-[10px] rounded-lg shadow-md">
               Sign Up
             </button>
           </form>
+          <p className="text-sm text-center mt-5">
+            Already have an account?{" "}
+            <a href="/login" className="text-themeGreen font-medium hover:underline">Login</a>
+          </p>
         </div>
-
         {/* Right: Logo */}
         <div className="flex-1 flex items-center justify-center p-10">
-          <img
-            src="/logoWithname.png"
-            alt="Logo"
-            className="max-w-[250px] object-contain"
-          />
+          <img src="/logoWithname.png" alt="Logo" className="max-w-[250px] object-contain" />
         </div>
       </div>
     </div>
