@@ -1,6 +1,5 @@
 import React from "react";
 import Team from "../sections/AboutUs/Team";
-import WeOffer from "../sections/AboutUs/weOffer";
 import Vision from "../sections/AboutUs/Vision";
 import HowToUse from "../sections/AboutUs/HowToUse";
 
@@ -21,7 +20,6 @@ function About() {
       </div>
       <div className="flex flex-col gap-6">
         <Vision />
-        <WeOffer />
         <HowToUse />
         <Team />
       </div>
