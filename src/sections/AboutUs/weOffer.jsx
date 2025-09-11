@@ -3,11 +3,12 @@
 export default function WeOffer() {
   return (
     <section className="flex items-center justify-center  ">
+      
       <div className="w-full max-w-6xl p-10">
         {/* Heading */}
         <div className="flex flex-col items-center mb-10">
           <h4 className="text-themeGreen text-md font-medium ">
-            What we stand for
+            What we offer
           </h4>
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-2 text-center md:text-left">
             Key Features
@@ -16,7 +17,7 @@ export default function WeOffer() {
 
         {/* Features Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="bg-white flex flex-col items-center text-center p-4 shadow-md">
+          <div className="bg-themeCream flex flex-col items-center text-center p-4 shadow-md transform transition-transform duration-300 hover:scale-105">
             <img
               src="/featuresAbout/1.jpg"
               alt="Verified Community"
@@ -28,7 +29,7 @@ export default function WeOffer() {
             </p>
           </div>
 
-          <div className="bg-white flex flex-col items-center text-center p-4 shadow-md">
+          <div className="bg-themeCream flex flex-col items-center text-center p-4 shadow-md transform transition-transform duration-300 hover:scale-105">
             <img
               src="/featuresAbout/2.jpg"
               alt="Quick Posting"
@@ -40,7 +41,7 @@ export default function WeOffer() {
             </p>
           </div>
 
-          <div className="bg-white flex flex-col items-center text-center p-4 shadow-md">
+          <div className="bg-themeCream flex flex-col items-center text-center p-4 shadow-md transform transition-transform duration-300 hover:scale-105">
             <img
               src="/featuresAbout/3.jpg"
               alt="Categorized Items"
@@ -52,7 +53,7 @@ export default function WeOffer() {
             </p>
           </div>
 
-          <div className="bg-white flex flex-col items-center text-center p-4 shadow-md">
+          <div className="bg-themeCream flex flex-col items-center text-center p-4 shadow-md transform transition-transform duration-300 hover:scale-105">
             <img
               src="/featuresAbout/4.jpg"
               alt="No WhatsApp Forwards"
