@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import About from "./pages/About";
 
 import Lost from "./pages/Lost";
+import Found from "./pages/Found";
 
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path = "/About" element={<About />} />
           <Route path = "/Lost" element={<Lost />} />
+          <Route path = "/Found" element={<Found />} />
         </Routes>
         <Footer />
       </div>

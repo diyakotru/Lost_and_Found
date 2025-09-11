@@ -7,12 +7,16 @@ export default function Navbar() {
         <div className="flex justify-between h-16 items-center">
           {/* Brand */}
           <div className="flex items-center gap-3">
+            <Link to={"/"}>
             <img
               src="/logo.png"
               alt="IGDTUW Lost & Found Logo"
               className="w-12 h-12 rounded-full object-cover"
             />
+            </Link>
+            <Link to="/">
             <span className="font-bold text-xl">Lost and Found</span>
+            </Link>
           </div>
 
           {/* Links */}
@@ -20,8 +24,12 @@ export default function Navbar() {
             <Link to={"/"}>
               <span className="font-bold">Home</span>
             </Link>
-            <Link to={"/Lost"}><span className="font-bold">Lost Items</span></Link>
-            <span className="font-bold">Found Items</span>
+            <Link to={"/Lost"}>
+              <span className="font-bold">Lost Items</span>
+            </Link>
+            <Link to="/Found">
+              <span className="font-bold">Found Items</span>
+            </Link>
             <Link to={"/About"}>
               <span className="font-bold">About Us</span>
             </Link>

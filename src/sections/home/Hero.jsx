@@ -32,9 +32,11 @@ function Hero() {
                   Report Lost Item
                 </button>
               </Link>
-              <button className="px-4 py-2 rounded-md text-themeGreen font-semibold bg-themeCream">
-                Report Found Item
-              </button>
+              <Link to="/Found">
+                <button className="px-4 py-2 rounded-md text-themeGreen font-semibold bg-themeCream">
+                  Report Found Item
+                </button>
+              </Link>
             </div>
           </div>
         </div>

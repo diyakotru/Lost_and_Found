@@ -30,21 +30,23 @@ const Footer = () => {
           <div className="flex flex-col ">
             <h5 className="font-bold mb-2">Report</h5>
             <Link to="/Lost" className="hover:underline">
+              Lost
             </Link>
-            <a href="/" className="hover:underline">
+            <Link to="/Lost" className="hover:underline">
               Found
-            </a>
+            </Link>
           </div>
 
           <div className="flex flex-col ">
             <h5 className="font-bold mb-2">Contact Us</h5>
-            <a href="mailto:" className="hover:underline">
+            {/* <a href="mailto:" className="hover:underline">
               Email
-            </a>
+            </a> */}
+            Madrasa Road Opposite, <br/>St. James Church, <br/>Kashmere Gate, <br/>Delhi-110006
           </div>
 
           <div className="flex flex-col ">
-            <h5 className="font-bold">About Us</h5>
+            <Link to="/About"><h5 className="font-bold">About Us</h5></Link>
             <h5 className="font-bold">FAQs</h5>
             <h5 className="font-bold">Help</h5>
           </div>

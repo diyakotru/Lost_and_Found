@@ -7,8 +7,7 @@ function RequiredLabel({ htmlFor, children }) {
     </label>
   );
 }
-
-function Lost() {
+function Found() {
   const [image, setImage] = useState(null);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -22,12 +21,12 @@ function Lost() {
   <div className="flex flex-col w-[900px] bg-themeCream rounded-3xl overflow-hidden shadow-md p-10">
     {/* Heading */}
     <h1 className="text-2xl font-bold text-center text-themeGreen mb-8">
-      Report Lost Item
+      Report Found Item
     </h1>
 
     {/* Form + Upload Section */}
     <div className="flex gap-10">
-      {/* Left: Lost Items Info */}
+      {/* Left: Found Items Info */}
       <form className="flex-1 space-y-5">
         <div className="flex flex-col">
           <RequiredLabel htmlFor="itemname" className="text-sm font-medium mb-1">
@@ -56,14 +55,15 @@ function Lost() {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="location" className="text-sm font-medium mb-1 block text-base">
+          <RequiredLabel htmlFor="location" className="text-sm font-medium mb-1">
             Location
-          </label>
+          </RequiredLabel>
           <input
             type="text"
             id="location"
-            placeholder="Where you might lose it??"
+            placeholder="Where did you find this?"
             className="w-full rounded-lg border border-gray-300 px-3 py-2"
+            required
           />
         </div>
 
@@ -74,7 +74,7 @@ function Lost() {
           <input
             type="text"
             id="POC"
-            placeholder="Enter your name or contact info"
+            placeholder="To whom should owner contact?"
             className="w-full rounded-lg border border-gray-300 px-3 py-2"
             required
           />
@@ -83,14 +83,15 @@ function Lost() {
 
       {/* Right: Upload Image */}
       <div className="flex-1">
-        <label htmlFor="upload" className="text-sm font-medium mb-1 block text-base">
+        <RequiredLabel htmlFor="upload" className="text-sm font-medium mb-1">
           Upload the image
-        </label>
+        </RequiredLabel>
         <input
           type="file"
           accept="image/*"
           onChange={handleImageChange}
           className="mb-4 w-full rounded-lg border border-gray-300 px-3 py-2"
+          required
         />
 
         {image && (
@@ -120,4 +121,4 @@ function Lost() {
   );
 }
 
-export default Lost;
+export default Found;
