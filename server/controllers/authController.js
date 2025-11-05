@@ -18,11 +18,12 @@ export const signup = async (req, res) => {
     let user = await User.findOne({ email });
     if (!user) user = await User.create({ name, enrollment, email });
 
-    const otp = generateOTP();
-    await Otp.create({ email, otp });
-    await sendOtp(email, otp);
+  const otp = generateOTP();
+  await Otp.create({ email, otp });
+  const sent = await sendOtp(email, otp);
+  if (!sent) return res.status(500).json({ error: "Failed to send OTP email. Check server email configuration." });
 
-    res.json({ message: "OTP sent successfully" });
+  res.json({ message: "OTP sent successfully" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -82,11 +83,12 @@ export const login = async (req, res) => {
     const user = await User.findOne({ email, verified: true });
     if (!user) return res.status(400).json({ error: "User not found or not verified" });
 
-    const otp = generateOTP();
-    await Otp.create({ email, otp });
-    await sendOtp(email, otp);
+  const otp = generateOTP();
+  await Otp.create({ email, otp });
+  const sent = await sendOtp(email, otp);
+  if (!sent) return res.status(500).json({ error: "Failed to send OTP email. Check server email configuration." });
 
-    res.json({ message: "OTP sent for login" });
+  res.json({ message: "OTP sent for login" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

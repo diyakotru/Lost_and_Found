@@ -38,8 +38,15 @@ function Login() {
     }
     try {
       const res = await api.post("/auth/verify-otp", { email, otp });
-      if (res.data.message) {
+      // If backend returned a token, persist it and consider the user logged in
+      if (res.data.token) {
+        localStorage.setItem("token", res.data.token);
+        if (res.data.user) localStorage.setItem("user", JSON.stringify(res.data.user));
         alert("OTP verified! Login successful.");
+        navigate("/");
+      } else if (res.data.message) {
+        // Generic success message (e.g. signup verification flow)
+        alert(res.data.message);
         navigate("/");
       }
     } catch (err) {
