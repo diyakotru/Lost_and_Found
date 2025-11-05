@@ -24,7 +24,7 @@ function Signup() {
       return;
     }
     try {
-      res = await api.post("/auth/send-otp", { name, enrollment, email });
+      const res = await api.post("/auth/send-otp", { name, enrollment, email });
       if (res.data.message) {
         alert("OTP sent to email!");
         setOtpSent(true);
@@ -37,7 +37,13 @@ function Signup() {
     e.preventDefault();
     try {
       const res = await api.post("/auth/verify-otp", { ...formData });
-      if (res.data.message) {
+      // If backend returns a token (auto-login), persist it
+      if (res.data.token) {
+        localStorage.setItem("token", res.data.token);
+        if (res.data.user) localStorage.setItem("user", JSON.stringify(res.data.user));
+        alert("Signup complete — logged in.");
+        navigate("/");
+      } else if (res.data.message) {
         alert("OTP verified! Signup successful.");
         navigate("/login");
       } else {
